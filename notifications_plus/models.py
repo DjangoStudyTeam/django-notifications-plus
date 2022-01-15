@@ -31,7 +31,9 @@ class AbstractNotification(models.Model):
         null=True,
     )
     action_object_object_id = models.CharField(max_length=255, blank=True, null=True)
-    action_object = GenericForeignKey("action_object_content_type", "action_object_object_id")
+    action_object = GenericForeignKey(
+        "action_object_content_type", "action_object_object_id"
+    )
 
     class Meta:
         abstract = True
