@@ -12,11 +12,16 @@ packages = [
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0"
+Django = "3.2"
+django-rest-framework = "^0.1.0"
+drf-extensions = "^0.7.1"
+factory-boy = "^3.2.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 pytest-django = "^4.5.2"
 flake8 = "^4.0.1"
+django-test-plus = "^2.2.0"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "tests.settings"
