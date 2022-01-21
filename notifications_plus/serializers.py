@@ -5,10 +5,6 @@ from notifications_plus import get_notification_model
 NotificationModel = get_notification_model()
 
 
-class NotificationCreateSerializer(serializers.ModelSerializer):
-    pass
-
-
 class NotificationListSerializer(serializers.ModelSerializer):
     class Meta:
         model = NotificationModel

@@ -1,20 +1,27 @@
+import pytest
 from django.contrib.auth.models import User
-from test_plus.test import APITestCase
+from rest_framework.reverse import reverse
+from rest_framework.test import APIClient
+from notifications_plus.models import Notification
 
-from .factories import NotificationFactory
 
+@pytest.mark.django_db
+class TestNotificationViewSet:
+    def setup(self):
+        self.api_client = APIClient()
+        self.user = User.objects.create_user(username="user", password="password", email="user@example.com")
+        self.list_url = reverse("notifications-list")
 
-class NotificationViewSetTestCase(APITestCase):
-    def setUp(self) -> None:
-        self.user1 = User.objects.create_user(
-            username="user1", password="password", email="user1@example.com"
-        )
-        self.user2 = User.objects.create_user(
-            username="user2", password="password", email="user2@example.com"
-        )
+    def create_notifications(self):
+        instance = Notification.objects.create(content="111", unread=False, recipient=self.user, actor=self.user)
+        instance.save()
 
-    def test_notification(self):
-        NotificationFactory.create_batch(5)
-        self.login(username=self.user1.username, password="password")
-        response = self.get("notification-list")
-        print(response.data)
+    def test_list_permission(self):
+        response = self.api_client.post(self.list_url)
+        assert response.status_code == 401
+
+    def test_list_notifications(self):
+        self.create_notifications()
+        self.api_client.force_authenticate(user=self.user)
+        response = self.api_client.get(self.list_url, data={"page": 1})
+        assert len(response.data) == 1

@@ -1,9 +1,9 @@
-from rest_framework_extensions.routers import ExtendedSimpleRouter
-
 from notifications_plus.viewsets import NotificationViewSet
-
-router = ExtendedSimpleRouter()
-router.register("notification", NotificationViewSet, basename="notification")
+from rest_framework.routers import SimpleRouter
 
 
-urlpatterns = router.urls + []
+router = SimpleRouter()
+router.register("notifications", NotificationViewSet, basename="notifications")
+
+
+urlpatterns = router.urls
