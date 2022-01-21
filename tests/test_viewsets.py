@@ -2,6 +2,7 @@ import pytest
 from django.contrib.auth.models import User
 from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
+
 from notifications_plus.models import Notification
 
 
@@ -9,11 +10,15 @@ from notifications_plus.models import Notification
 class TestNotificationViewSet:
     def setup(self):
         self.api_client = APIClient()
-        self.user = User.objects.create_user(username="user", password="password", email="user@example.com")
+        self.user = User.objects.create_user(
+            username="user", password="password", email="user@example.com"
+        )
         self.list_url = reverse("notifications-list")
 
     def create_notifications(self):
-        instance = Notification.objects.create(content="111", unread=False, recipient=self.user, actor=self.user)
+        instance = Notification.objects.create(
+            content="111", unread=False, recipient=self.user, actor=self.user
+        )
         instance.save()
 
     def test_list_permission(self):
