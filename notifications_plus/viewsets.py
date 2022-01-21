@@ -1,6 +1,5 @@
 from django_filters import rest_framework as filters
-from rest_framework import mixins, permissions, status
-from rest_framework.response import Response
+from rest_framework import mixins, permissions
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.pagination import PageNumberPagination
 from notifications_plus import get_notification_model
