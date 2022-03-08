@@ -2,6 +2,7 @@
 USE_TZ = True
 
 SECRET_KEY = "test-secret-key"
+ROOT_URLCONF = "tests.urls"
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -11,7 +12,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "notifications_plus",
     "tests.app",
+    "django_filters",
 ]
+
+NOTIFICATIONS_PLUS_NOTIFICATION_MODEL = "notifications_plus.Notification"
 DATABASES = {
     "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"},
 }
