@@ -18,7 +18,7 @@ class TestNotificationViewSet:
         self.actor_user = User.objects.create_user(
             username="actor_user", password="password", email="user3@example.com"
         )
-        self.list_url = reverse("notifications-list")
+        self.list_url = reverse("notification-list")
         self.notification_1 = Notification.objects.create(
             content="111", unread=True, recipient=self.user, actor=self.actor_user
         )

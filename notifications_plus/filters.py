@@ -6,7 +6,6 @@ NotificationModel = get_notification_model()
 
 
 class NotificationFilter(filters.FilterSet):
-
     class Meta:
         model = NotificationModel
         fields = ["unread"]
