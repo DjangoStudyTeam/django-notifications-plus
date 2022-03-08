@@ -6,7 +6,6 @@ NotificationModel = get_notification_model()
 
 
 class NotificationFilter(filters.FilterSet):
-    unread = filters.CharFilter()
 
     class Meta:
         model = NotificationModel

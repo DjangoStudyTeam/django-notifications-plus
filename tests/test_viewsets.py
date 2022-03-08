@@ -49,6 +49,6 @@ class TestNotificationViewSet:
     def test_list_order_by_created_at(self):
         self.api_client.force_authenticate(user=self.user)
         response = self.api_client.get(
-            self.list_url, data={"page": 1, "ordering": "-created_at"}
+            self.list_url, data={"page": 1, "ordering": "created_at"}
         )
-        assert response.data[0]["created_at"] > response.data[1]["created_at"]
+        assert response.data[0]["created_at"] < response.data[1]["created_at"]
