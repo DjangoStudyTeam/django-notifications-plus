@@ -13,5 +13,4 @@ class NotificationListSerializer(serializers.ModelSerializer):
             "unread",
             "created_at",
             "recipient",
-            "actor",
         ]

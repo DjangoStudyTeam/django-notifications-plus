@@ -1,5 +1,6 @@
 from django_filters import rest_framework as filters
 from rest_framework import mixins, permissions
+from rest_framework.filters import OrderingFilter
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.viewsets import GenericViewSet
 
@@ -14,7 +15,7 @@ NotificationModel = get_notification_model()
 class NotificationViewSet(mixins.ListModelMixin, GenericViewSet):
     permission_classes = [permissions.IsAuthenticated]
     pagination_class = PageNumberPagination
-    filter_backends = [filters.DjangoFilterBackend]
+    filter_backends = [filters.DjangoFilterBackend, OrderingFilter]
     filter_class = NotificationFilter
     serializer_class = NotificationListSerializer
     ordering = ["-created_at"]
