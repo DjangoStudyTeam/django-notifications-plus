@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-notifications-plus"
-version = "0.0.1"
+version = "0.0.0"
 description = ""
 authors = ["jukanntenn <jukanntenn@outlook.com>"]
 readme = "README.md"
@@ -13,7 +13,7 @@ packages = [
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0"
 django-filter = "^21.1"
-django-rest-framework = "^0.1.0"
+djangorestframework = "^3.13.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
